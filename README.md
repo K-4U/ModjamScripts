@@ -35,3 +35,5 @@ Usage:
 Just run the script with python:
 
 > python streamScript.py
+
+Please take note that the Github API only allows for 60 requests every hour (per IP)! Do not change the timer at the bottom!
