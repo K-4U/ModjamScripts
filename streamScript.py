@@ -20,7 +20,7 @@ import simplejson
 lastTimeChecked = 0
 
 
-githubRepoReq = urllib2.Request("https://api.github.com/repos/%s/%s"%(nameOfUser, nameOfRepository);
+githubRepoReq = urllib2.Request("https://api.github.com/repos/%s/%s"%(nameOfUser, nameOfRepository));
 githubCommitReq = urllib2.Request("https://api.github.com/repos/%s/%s/commits/HEAD"%(nameOfUser, nameOfRepository))
 githubOpener = urllib2.build_opener()
 
