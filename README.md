@@ -32,7 +32,7 @@ Your config would be this:
 	nameOfRepository = "ModjamScripts"
 	nameOfUser = "K-4U"
 
-There isn't any more to it!
+If you don't want to check github every x minutes, set "checkForCommits" to False.
 
 Note: As of now there is no option of where to place the textfiles!
 

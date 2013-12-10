@@ -7,6 +7,9 @@
 
 #Config:
 
+checkForCommits = True
+
+#Only fill in this info if checkForCommits = True!
 nameOfRepository = "The name of your repository on github"
 nameOfUser = "The name of the user that owns the repository"
 
@@ -70,9 +73,13 @@ def getLatestCommit(lastTimeChecked):
     return lastTimeChecked
 
 
+
+
 count = 0
 while(1):
     time.sleep(1)
     calculateTimeLeft()
-    if((count % 120) == 0):
-        lastTimeChecked = getLatestCommit(lastTimeChecked)
+    if(checkForCommits):
+        if((count % 120) == 0):
+            lastTimeChecked = getLatestCommit(lastTimeChecked)
+        count+=1
