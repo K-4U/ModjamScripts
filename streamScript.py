@@ -17,8 +17,11 @@ nameOfUser = "The name of the user that owns the repository"
 # DO NOT CHANGE ANYTHING BELOW THIS LINE UNLESS YOU KNOW WHAT YOU ARE DOING!
 import time
 import datetime as dt
-import urllib2
-import simplejson
+try:
+    import urllib2
+except ImportError:
+    import urllib.request as urllib2
+import json
 
 lastTimeChecked = 0
 
@@ -29,7 +32,7 @@ githubOpener = urllib2.build_opener()
 
 
 def calculateTimeLeft():
-    endDate = dt.datetime(2013,12,17,05,59,59).replace(microsecond=0);
+    endDate = dt.datetime(2013,12,17,5,59,59).replace(microsecond=0);
     dateNow = dt.datetime.now().replace(microsecond=0);
 
     td = (endDate-dateNow)
@@ -65,7 +68,7 @@ def getLatestCommit(lastTimeChecked):
         outputString = outputString % (timeAgo, committer, message)
 
         # print(outputString)
-        
+
         outputFile = open('lastCommit.txt', 'w')
         outputFile.write(outputString)
         outputFile.close()
