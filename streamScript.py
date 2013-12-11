@@ -10,8 +10,12 @@
 checkForCommits = True
 
 #Only fill in this info if checkForCommits = True!
-nameOfRepository = "The name of your repository on github"
-nameOfUser = "The name of the user that owns the repository"
+# nameOfRepository = "The name of your repository on github"
+# nameOfUser = "The name of the user that owns the repository"
+
+nameOfRepository = "Hydraulicraft"
+nameOfUser = "K-4U"
+
 
 
 # DO NOT CHANGE ANYTHING BELOW THIS LINE UNLESS YOU KNOW WHAT YOU ARE DOING!
@@ -44,15 +48,15 @@ def calculateTimeLeft():
     outputFile.close()
 
 def getLatestCommit(lastTimeChecked):
-    # f = githubOpener.open(githubRepoReq)
-    # t = simplejson.load(f)
-    t = {}
-    t['pushed_at'] = "2013-12-08T12:29:39Z"
+    f = githubOpener.open(githubRepoReq)
+    t = json.load(f)
+    # t = {}
+    # t['pushed_at'] = "2013-12-08T12:29:39Z"
     if not (lastTimeChecked == t['pushed_at']):
         lastTimeChecked = t['pushed_at']
         #Get last commit:
         f = githubOpener.open(githubCommitReq)
-        lastCommit = simplejson.load(f)
+        lastCommit = json.load(f)
         #Write to file
         # lastCommit = {'commit':{"message":"test","committer":{"name":"Koen Beckers"}}}
 

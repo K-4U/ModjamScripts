@@ -5,8 +5,7 @@ Sorry. There is no script (yet) for people who use bitbucket. They can simply di
 ##Prerequisites
 
 ####For streamScript 
-Githubv3 API for python:
-[https://github.com/copitux/python-github3](https://github.com/copitux/python-github3)
+None!
 
 ###For commitScript
 None!
