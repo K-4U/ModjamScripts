@@ -49,14 +49,16 @@ def calculateTimeLeft():
 
 def getLatestCommit(lastTimeChecked):
     f = githubOpener.open(githubRepoReq)
-    t = json.load(f)
+    f = f.read().decode('utf-8')
+    t = json.loads(f)
     # t = {}
     # t['pushed_at'] = "2013-12-08T12:29:39Z"
     if not (lastTimeChecked == t['pushed_at']):
         lastTimeChecked = t['pushed_at']
         #Get last commit:
         f = githubOpener.open(githubCommitReq)
-        lastCommit = json.load(f)
+        f = f.read().decode('utf-8')
+        lastCommit = json.loads(f)
         #Write to file
         # lastCommit = {'commit':{"message":"test","committer":{"name":"Koen Beckers"}}}
 
