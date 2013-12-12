@@ -9,7 +9,7 @@ Githubv3 API for python:
 [https://github.com/copitux/python-github3](https://github.com/copitux/python-github3)
 
 ###For commitScript
-None!
+Only that you have Git installed and in your PATH. I don't know if Github for windows does this!
 
 ##Install
 ###For streamScript
