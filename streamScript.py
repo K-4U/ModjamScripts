@@ -10,15 +10,22 @@
 checkForCommits = True
 
 #Only fill in this info if checkForCommits = True!
-nameOfRepository = "The name of your repository on github"
-nameOfUser = "The name of the user that owns the repository"
+# nameOfRepository = "The name of your repository on github"
+# nameOfUser = "The name of the user that owns the repository"
+
+nameOfRepository = "Hydraulicraft"
+nameOfUser = "K-4U"
+
 
 
 # DO NOT CHANGE ANYTHING BELOW THIS LINE UNLESS YOU KNOW WHAT YOU ARE DOING!
 import time
 import datetime as dt
-import urllib2
-import simplejson
+try:
+    import urllib2
+except ImportError:
+    import urllib.request as urllib2
+import json
 
 lastTimeChecked = 0
 
@@ -29,7 +36,7 @@ githubOpener = urllib2.build_opener()
 
 
 def calculateTimeLeft():
-    endDate = dt.datetime(2013,12,17,05,59,59).replace(microsecond=0);
+    endDate = dt.datetime(2013,12,17,5,59,59).replace(microsecond=0);
     dateNow = dt.datetime.now().replace(microsecond=0);
 
     td = (endDate-dateNow)
@@ -41,15 +48,15 @@ def calculateTimeLeft():
     outputFile.close()
 
 def getLatestCommit(lastTimeChecked):
-    # f = githubOpener.open(githubRepoReq)
-    # t = simplejson.load(f)
-    t = {}
-    t['pushed_at'] = "2013-12-08T12:29:39Z"
+    f = githubOpener.open(githubRepoReq)
+    t = json.load(f)
+    # t = {}
+    # t['pushed_at'] = "2013-12-08T12:29:39Z"
     if not (lastTimeChecked == t['pushed_at']):
         lastTimeChecked = t['pushed_at']
         #Get last commit:
         f = githubOpener.open(githubCommitReq)
-        lastCommit = simplejson.load(f)
+        lastCommit = json.load(f)
         #Write to file
         # lastCommit = {'commit':{"message":"test","committer":{"name":"Koen Beckers"}}}
 
@@ -65,7 +72,7 @@ def getLatestCommit(lastTimeChecked):
         outputString = outputString % (timeAgo, committer, message)
 
         # print(outputString)
-        
+
         outputFile = open('lastCommit.txt', 'w')
         outputFile.write(outputString)
         outputFile.close()
