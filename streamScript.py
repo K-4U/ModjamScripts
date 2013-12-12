@@ -10,12 +10,8 @@
 checkForCommits = True
 
 #Only fill in this info if checkForCommits = True!
-# nameOfRepository = "The name of your repository on github"
-# nameOfUser = "The name of the user that owns the repository"
-
-nameOfRepository = "Hydraulicraft"
-nameOfUser = "K-4U"
-
+nameOfRepository = "The name of your repository on github"
+nameOfUser = "The name of the user that owns the repository"
 
 
 # DO NOT CHANGE ANYTHING BELOW THIS LINE UNLESS YOU KNOW WHAT YOU ARE DOING!
