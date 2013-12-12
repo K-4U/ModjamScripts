@@ -64,3 +64,8 @@ It'll print out the time that is left before making a commit. It will do this in
 
 ##Example
 ![](https://dl.dropboxusercontent.com/u/343724/MC/Modjam/streamScriptPreview.png)
+
+##Disclaimer:
+I am in NO way responsible if either of these scripts fails and stops autocommitting! I do suggest you still commit some code yourself, and check if the script runs. It has only been tested for about 15 minutes.. So i have no idea how it behaves when it runs 96 hours straight!
+If it blows up your pc, i have NOTHING to do with it!
+Also, in case of rogue AI, shout "This sentence is false!" to confuse it.
