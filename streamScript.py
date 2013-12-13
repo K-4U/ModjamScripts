@@ -24,7 +24,7 @@ except ImportError:
 import json
 
 lastTimeChecked = 0
-
+lastCommit = [{}]
 
 githubRepoReq = urllib2.Request("https://api.github.com/repos/%s/%s"%(nameOfUser, nameOfRepository));
 githubCommitReq = urllib2.Request("https://api.github.com/repos/%s/%s/commits/HEAD"%(nameOfUser, nameOfRepository))
@@ -43,7 +43,7 @@ def calculateTimeLeft():
     outputFile.write("Time left: %s!"%td)
     outputFile.close()
 
-def getLatestCommit(lastTimeChecked):
+def getLatestCommit(lastTimeChecked, lastCommit):
     f = githubOpener.open(githubRepoReq)
     f = f.read().decode('utf-8')
     t = json.loads(f)
@@ -54,28 +54,28 @@ def getLatestCommit(lastTimeChecked):
         #Get last commit:
         f = githubOpener.open(githubCommitReq)
         f = f.read().decode('utf-8')
-        lastCommit = json.loads(f)
+        lastCommit[0] = json.loads(f)
         #Write to file
         # lastCommit = {'commit':{"message":"test","committer":{"name":"Koen Beckers"}}}
 
-        outputString = "Last commit: %i minutes ago by %s: %s"
-        message = lastCommit['commit']["message"]
-        committer = lastCommit['commit']["committer"]["name"]
-        commitTime = time.mktime(time.strptime(lastTimeChecked, "%Y-%m-%dT%H:%M:%SZ")) #Time in GMT
-        timeNow = time.mktime(time.gmtime())
-        timeAgo = (timeNow-commitTime)
+    outputString = "Last commit: %i minutes ago by %s: %s"
+    message = lastCommit[0]['commit']["message"]
+    committer = lastCommit[0]['commit']["committer"]["name"]
+    commitTime = time.mktime(time.strptime(lastTimeChecked, "%Y-%m-%dT%H:%M:%SZ")) #Time in GMT
+    timeNow = time.mktime(time.gmtime())
+    timeAgo = (timeNow-commitTime)
 
-        timeAgo = timeAgo / 60;
+    timeAgo = timeAgo / 60;
 
-        outputString = outputString % (timeAgo, committer, message)
+    outputString = outputString % (timeAgo, committer, message)
 
-        # print(outputString)
+    # print(outputString)
 
-        outputFile = open('lastCommit.txt', 'w')
-        outputFile.write(outputString)
-        outputFile.close()
+    outputFile = open('lastCommit.txt', 'w')
+    outputFile.write(outputString)
+    outputFile.close()
 
-    return lastTimeChecked
+    return (lastTimeChecked, lastCommit)
 
 
 
@@ -86,5 +86,5 @@ while(1):
     calculateTimeLeft()
     if(checkForCommits):
         if((count % 120) == 0):
-            lastTimeChecked = getLatestCommit(lastTimeChecked)
+            lastTimeChecked, lastCommit = getLatestCommit(lastTimeChecked, lastCommit)
         count+=1
