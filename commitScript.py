@@ -15,7 +15,7 @@ from subprocess import *
 def command(x):
     if(print_debug):
         print(x)
-    return str(Popen(x, stdout=PIPE).communicate()[0])
+    return str(Popen(x, stdout=PIPE, shell=True).communicate()[0])
 
 def rm_empty(L): return [l for l in L if (l and l!="")]
 
