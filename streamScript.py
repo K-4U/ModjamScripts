@@ -32,7 +32,7 @@ githubOpener = urllib2.build_opener()
 
 
 def calculateTimeLeft():
-    endDate = dt.datetime(2013,12,17,5,59,59).replace(microsecond=0);
+    endDate = dt.datetime(2014,05,18,23,59,59).replace(microsecond=0);
     dateNow = dt.datetime.now().replace(microsecond=0);
 
     td = (endDate-dateNow)
